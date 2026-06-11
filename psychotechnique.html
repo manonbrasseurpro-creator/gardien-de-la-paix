@@ -334,6 +334,33 @@
       transform: none;
     }
 
+    .start-test-actions {
+      flex-direction: column;
+      justify-content: center;
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    #start-test-button {
+      min-height: 68px;
+      max-width: 100%;
+      padding: 20px 50px;
+      color: var(--navy);
+      background: #f0b429;
+      border: 1px solid #f0b429;
+      border-radius: 50px;
+      box-shadow: 0 14px 30px rgba(26, 39, 68, 0.2);
+      font-size: 1.4rem;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    #start-test-button:hover,
+    #start-test-button:focus-visible {
+      box-shadow: 0 20px 40px rgba(26, 39, 68, 0.28);
+      transform: translateY(-4px);
+    }
+
     .results-panel {
       display: grid;
       gap: 18px;
@@ -451,7 +478,7 @@
         </article>
       </div>
 
-      <div class="actions" style="margin-top: 24px;">
+      <div class="actions start-test-actions">
         <button id="start-test-button" class="primary-button" type="button">Démarrer un test de 40 questions</button>
         <a class="secondary-button" href="index.html">Retour vers index.html</a>
       </div>
