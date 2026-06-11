@@ -770,9 +770,9 @@
       remainingSeconds = 30;
       updateTimerText();
       intervalId = setInterval(() => {
-        updateTimerText();
         remainingSeconds -= 1;
-        if (remainingSeconds < 0) {
+        updateTimerText();
+        if (remainingSeconds <= 0) {
           handleTimeout();
         }
       }, 1000);
@@ -1050,6 +1050,12 @@
     };
 
     function cubeSvg(kind) {
+      const labels = {
+        cubeCross: "Cube avec face bleue au centre",
+        cubeLine: "Cube avec bande bleue alignée",
+        cubeStair: "Cube avec faces en escalier",
+        cubePyramid: "Cube avec trois faces autour du sommet"
+      };
       const palettes = {
         cubeCross: ["#2f5f9f", "#8fb3e8", "#dce7ff"],
         cubeLine: ["#2f5f9f", "#2f5f9f", "#8fb3e8"],
@@ -1058,7 +1064,7 @@
       };
       const [top, left, right] = palettes[kind];
       return `
-        <svg viewBox="0 0 200 200" role="img" aria-label="${cubeLabels[kind]}">
+        <svg viewBox="0 0 200 200" role="img" aria-label="${labels[kind]}">
           <rect x="8" y="8" width="184" height="184" rx="20" fill="#f5f7fb" stroke="#d8deea"/>
           <polygon points="100,28 158,62 100,96 42,62" fill="${top}" stroke="#1a2744" stroke-width="2"/>
           <polygon points="42,62 100,96 100,166 42,132" fill="${left}" stroke="#1a2744" stroke-width="2"/>
