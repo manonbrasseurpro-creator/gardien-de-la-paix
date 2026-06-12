@@ -3033,6 +3033,122 @@ C'est ce qui fait la différence entre une bonne et une excellente réponse.</p>
       }
     });
 
+    function findDocumentForQuestion(caseItem, question) {
+      if (!question.docs || !question.docs.length) {
+        return caseItem.documents[0];
+      }
+      return caseItem.documents.find((documentItem) => (
+        question.docs.some((docName) => documentItem.title.includes(docName))
+      )) || caseItem.documents[0];
+    }
+
+    function buildArticleReference(documentItem) {
+      if (!documentItem) {
+        return "le texte du dossier";
+      }
+
+      const articleMatch = documentItem.title.match(/Article\s+(.+)$/);
+      if (articleMatch) {
+        return `l'article ${articleMatch[1]}`;
+      }
+      return documentItem.title.replace(/^Document \d+\s*-\s*/, "le document ");
+    }
+
+    function buildReferenceWithPreposition(reference) {
+      return reference.startsWith("le ") ? `du ${reference.slice(3)}` : `de ${reference}`;
+    }
+
+    function buildLegalOpening(caseItem, question) {
+      const reference = buildArticleReference(findDocumentForQuestion(caseItem, question));
+      const referenceWithPreposition = buildReferenceWithPreposition(reference);
+      const type = getQuestionType(caseItem, question);
+
+      if (type === "qualification") {
+        return `Comme le stipule ${reference}, il convient en premier lieu de qualifier juridiquement les faits avec les éléments objectifs du dossier.`;
+      }
+      if (type === "procedure") {
+        return `En vertu ${referenceWithPreposition}, il convient en premier lieu de rédiger un compte rendu chronologique, neutre et utile à l'OPJ.`;
+      }
+      if (type === "protection") {
+        return `Aux termes ${referenceWithPreposition}, je suis tenu de rechercher les mesures utiles de protection et d'orientation de la victime.`;
+      }
+      return `En vertu ${referenceWithPreposition}, il convient en premier lieu de traiter l'urgence sans dépasser son rôle de GPX.`;
+    }
+
+    function extractPenaltySentence(caseItem, question) {
+      const relevantDocuments = (question.docs || [])
+        .map((docName) => caseItem.documents.find((documentItem) => documentItem.title.includes(docName)))
+        .filter(Boolean);
+      const documentsToSearch = relevantDocuments.length ? relevantDocuments : caseItem.documents;
+      const penaltyDocument = documentsToSearch.find((documentItem) => (
+        /\b(puni|punie|punies|peine|emprisonnement|amende)\b/i.test(documentItem.text)
+      ));
+
+      if (!penaltyDocument) {
+        return "";
+      }
+
+      const sentence = penaltyDocument.text.match(/[^.]*\b(?:puni|punie|punies|peine|emprisonnement|amende)\b[^.]*\./i);
+      return sentence ? sentence[0].trim() : "";
+    }
+
+    function buildPenaltyReminder(caseItem, question, model) {
+      if (getQuestionType(caseItem, question) !== "qualification") {
+        return "";
+      }
+      if (/\b(emprisonnement|amende|peine encourue|peines encourues)\b/i.test(model)) {
+        return "";
+      }
+
+      const penaltySentence = extractPenaltySentence(caseItem, question);
+      if (!penaltySentence) {
+        return "";
+      }
+      return `Je rappelle les peines encourues indiquées par le dossier : ${penaltySentence}`;
+    }
+
+    function buildHumanAndOperationalReminder(caseItem, question) {
+      const reminders = [];
+      const type = getQuestionType(caseItem, question);
+
+      if (!caseItem.noVictim && type !== "qualification") {
+        reminders.push("Il serait préférable de distinguer clairement : à l'égard de la victime, protection, confidentialité, assistance médicale et soutien psychologique ; à l'égard de l'auteur présumé, sécurisation, neutralité et transmission à l'OPJ.");
+        reminders.push("Il est possible également de proposer une orientation vers les associations, de rappeler les numéros d'urgence et, si le danger le justifie, d'envisager un hébergement d'urgence ou un dispositif de protection.");
+      }
+
+      if (type === "qualification") {
+        reminders.push("Les éléments constitutifs sont réunis, à savoir les faits matériels décrits, leur contexte et les indices objectifs du dossier, sous réserve des vérifications de l'OPJ et de l'autorité judiciaire.");
+      }
+
+      reminders.push("Dans ce cadre présent, je rends compte sans délai au CIC ou à la hiérarchie et je transmets les éléments à l'OPJ pour la suite, en restant dans mon rôle de gardien de la paix.");
+      return reminders.join(" ");
+    }
+
+    function enhanceModelWithBestCopyStyle(caseItem, question) {
+      const baseModel = question.model.trim();
+      const hasLegalOpening = /^(En vertu|Conformément|En application|Aux termes|Comme le stipule|Les faits constituent|Les faits sont susceptibles)/.test(baseModel);
+      const parts = [];
+
+      if (!hasLegalOpening) {
+        parts.push(buildLegalOpening(caseItem, question));
+      }
+      parts.push(baseModel);
+
+      const penaltyReminder = buildPenaltyReminder(caseItem, question, baseModel);
+      if (penaltyReminder) {
+        parts.push(penaltyReminder);
+      }
+
+      parts.push(buildHumanAndOperationalReminder(caseItem, question));
+      return parts.join(" ");
+    }
+
+    cases.forEach((caseItem) => {
+      caseItem.questions.forEach((question) => {
+        question.model = enhanceModelWithBestCopyStyle(caseItem, question);
+      });
+    });
+
     const modeConfig = {
       simulation: {
         label: "🎯 Simulation complète",
@@ -4107,7 +4223,7 @@ C'est ce qui fait la différence entre une bonne et une excellente réponse.</p>
       document.getElementById("structured-model-answer").innerHTML = buildStructuredModel(question);
       document.getElementById("common-errors").innerHTML = buildCommonErrors(getQuestionType(caseItem, question), caseItem, question).map((error) => `
         <li>
-          <strong>❌ Ne pas dire : ${escapeHtml(error.bad)}</strong>
+          <strong>❌ À éviter : ${escapeHtml(error.bad)}</strong>
           <span>✅ Dire : ${escapeHtml(error.good)}</span>
         </li>
       `).join("");
@@ -4189,46 +4305,66 @@ C'est ce qui fait la différence entre une bonne et une excellente réponse.</p>
 
     function buildStandardChecklist(normalizedAnswer, caseItem) {
       const hasNoVictim = caseItem.noVictim === true;
-      return [
+      const checklist = [
         {
-          label: "A qualifié juridiquement les faits",
-          found: /\b(qualifi|qualification|infraction|violence|vol|outrage|rebellion|flagrance|attroupement|disparition|delit)\b/.test(normalizedAnswer)
-        },
-        {
-          label: "A cité au moins un article exact du dossier",
+          label: "A cité l'article de loi pertinent",
           found: /\b(article|art\.|code|cpp|csi|penal|route|sante publique|r\.\d+|l\.\d+|\d{2,3}-\d+)\b/.test(normalizedAnswer)
         },
         {
-          label: "A proposé des actions dans l'ordre",
+          label: "A qualifié juridiquement les faits",
+          found: /\b(qualifi|qualification|constitue|constituer|infraction|violence|vol|outrage|rebellion|flagrance|attroupement|disparition|delit|agression|corruption|degradation)\b/.test(normalizedAnswer)
+        },
+        {
+          label: "A proposé des actions dans l'ordre chronologique",
           found: /\b(d'abord|en premier|ensuite|puis|apres|enfin|chronologique|priorite)\b/.test(normalizedAnswer)
         },
         {
-          label: "Est resté dans son rôle de GPX",
-          found: /\b(gpx|gardien|apj|opj|hierarchie|transmet|avise|rend compte|competence)\b/.test(normalizedAnswer)
+          label: "A rendu compte au CIC",
+          found: /\b(cic|radio|indicatif|tn\s*\d+|salle|commandement|rend compte|rendre compte)\b/.test(normalizedAnswer)
         },
         {
-          label: "A rendu compte à la hiérarchie",
-          found: /\b(hierarchie|superieur|chef|cic|salle|opj|parquet|rend compte|avise|informe)\b/.test(normalizedAnswer)
+          label: "A transmis à l'OPJ pour la suite",
+          found: /\b(opj|officier de police judiciaire|transmet|transmission|avise|informe|presente|conduit)\b/.test(normalizedAnswer)
         },
         {
-          label: "A pris en charge la victime si présente",
-          found: hasNoVictim || /\b(victime|blesse|secours|samu|pompiers|medical|umj|plainte|association|protection)\b/.test(normalizedAnswer)
+          label: "A proposé des solutions concrètes de terrain",
+          found: /\b(secours|samu|pompiers|umj|association|hebergement|perimetre|renfort|video|temoin|coordonnees|signalement|protection|separe|plainte|constat|preserve)\b/.test(normalizedAnswer)
         },
         {
           label: "N'a pas outrepassé les compétences GPX",
           found: /\b(opj|parquet|autorite judiciaire|transmet|avise|competence|sous controle|instructions)\b/.test(normalizedAnswer)
         }
       ];
+
+      if (!hasNoVictim) {
+        checklist.splice(2, 0,
+          {
+            label: "A proposé une assistance médicale à la victime",
+            found: /\b(medical|medecin|certificat|itt|umj|secours|samu|pompiers|urgence|soins)\b/.test(normalizedAnswer)
+          },
+          {
+            label: "A proposé une assistance psychologique",
+            found: /\b(psychologique|psy|soutien|cellule|aide aux victimes|association|ecoute)\b/.test(normalizedAnswer)
+          },
+          {
+            label: "A adapté l'accueil (confidentialité, bienveillance)",
+            found: /\b(confidentiel|confidentialite|bienveillant|ecoute|rassure|calme|accueil|a l'ecart|isole)\b/.test(normalizedAnswer)
+          },
+          {
+            label: "A séparé la prise en charge victime / auteur",
+            found: /\b(separe|eloigne|a l'ecart|contact|auteur|mis en cause|victime)\b/.test(normalizedAnswer)
+          },
+          {
+            label: "A mentionné les dispositifs de protection si pertinent",
+            found: /\b(protection|hebergement|urgence|telephone grave danger|ordonnance|association|mise en securite|danger)\b/.test(normalizedAnswer)
+          }
+        );
+      }
+
+      return checklist;
     }
 
     function buildCommonErrors(type, caseItem, question) {
-      if (question.commonErrors && question.commonErrors.length) {
-        return question.commonErrors;
-      }
-      if (caseItem.commonErrors && caseItem.commonErrors.length) {
-        return caseItem.commonErrors;
-      }
-
       const errors = {
         qualification: [
           {
@@ -4272,7 +4408,44 @@ C'est ce qui fait la différence entre une bonne et une excellente réponse.</p>
         ]
       };
 
-      return errors[type] || errors.actions;
+      const sharedErrors = [
+        {
+          bad: "Je mets la personne en garde à vue.",
+          good: "Je présente la personne devant l'OPJ qui décidera du placement en garde à vue."
+        },
+        {
+          bad: "Oublier de rendre compte au CIC.",
+          good: "Je rends compte sans délai au CIC à l'indicatif TN 00."
+        },
+        {
+          bad: "Ne pas mentionner l'avis au procureur.",
+          good: "Il est impératif d'aviser le procureur via l'OPJ pour connaître la marche à suivre."
+        },
+        {
+          bad: "Proposer des actions qui dépassent le rôle du GPX.",
+          good: "Cette décision relevant de la compétence de l'OPJ, je lui transmets immédiatement l'affaire."
+        }
+      ];
+
+      const victimErrors = caseItem.noVictim ? [] : [
+        {
+          bad: "Oublier de proposer un soutien médical/psychologique.",
+          good: "Je propose à la victime de consulter un médecin pour établir un certificat médical et lui demande si elle souhaite une assistance psychologique."
+        },
+        {
+          bad: "Ne pas séparer la prise en charge victime/auteur.",
+          good: "À l'égard de la victime, je sécurise et j'accompagne. À l'égard de l'auteur, je sécurise, je reste neutre et je transmets à l'OPJ."
+        }
+      ];
+
+      if (question.commonErrors && question.commonErrors.length) {
+        return [...question.commonErrors, ...victimErrors, ...sharedErrors];
+      }
+      if (caseItem.commonErrors && caseItem.commonErrors.length) {
+        return [...caseItem.commonErrors, ...victimErrors, ...sharedErrors];
+      }
+
+      return [...(errors[type] || errors.actions), ...victimErrors, ...sharedErrors];
     }
 
     function buildDocumentHighlights(caseItem, question) {
