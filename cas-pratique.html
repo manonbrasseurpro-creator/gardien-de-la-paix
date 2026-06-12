@@ -1607,16 +1607,8 @@ C'est ce qui fait la différence entre une bonne et une excellente réponse.</p>
             text: "Le policier accomplit ses missions avec probité, discernement, dignité, impartialité et exemplarité. Il accorde une attention particulière aux victimes."
           },
           {
-            title: "Document 5 - Dispositifs de protection des victimes",
-            text: "L'accueil de la victime implique la mise en sécurité, la prise de plainte, l'orientation vers une unité médico-judiciaire, l'information du parquet et l'orientation vers les associations d'aide aux victimes."
-          },
-          {
-            title: "Document 6 - Article 15-3 du Code de procédure pénale",
-            text: "Les officiers et agents de police judiciaire sont tenus de recevoir les plaintes déposées par les victimes d'infractions et de les transmettre, le cas échéant, au service territorialement compétent."
-          },
-          {
-            title: "Document 7 - Évaluation du danger en violences conjugales",
-            text: "L'accueil d'une victime de violences conjugales se fait dans un cadre confidentiel. L'évaluation du danger peut s'appuyer sur une grille de questions portant notamment sur la répétition des violences, les menaces, la présence d'enfants, l'isolement et les besoins médicaux ou sociaux."
+            title: "Document 5 - Article 15-3 du CPP et accueil des victimes",
+            text: "Les officiers et agents de police judiciaire sont tenus de recevoir les plaintes des victimes d'infractions. L'accueil d'une victime de violences conjugales implique la confidentialité, l'évaluation du danger, la mise en sécurité, l'orientation médicale et l'aide aux victimes."
           }
         ],
         questions: [
@@ -1644,7 +1636,7 @@ C'est ce qui fait la différence entre une bonne et une excellente réponse.</p>
               { label: "A évoqué l'évaluation du danger", keywords: ["danger", "evaluation", "menaces"] },
               { label: "A mentionné les associations d'aide aux victimes et l'accompagnement médical", keywords: ["association", "medical", "umj"] }
             ],
-            docs: ["Document 4", "Document 5", "Document 6", "Document 7"]
+            docs: ["Document 4", "Document 5"]
           },
           {
             title: "Question 3 - Gestion de BRAVO devant le commissariat",
@@ -2108,8 +2100,662 @@ C'est ce qui fait la différence entre une bonne et une excellente réponse.</p>
             docs: ["Document 1", "Document 2", "Document 5"]
           }
         ]
+      },
+      {
+        id: "rixe-voisins-escalier",
+        title: "Rixe entre voisins dans une cage d'escalier",
+        theme: "Violences, refus d'obtempérer, outrage et sécurisation d'immeuble",
+        situation: [
+          "Vous êtes gardien de la paix à Xville, indicatif TN 21, en patrouille avec BRAVO. À 22 h 05, le CIC vous engage pour une dispute violente dans la cage d'escalier d'un immeuble de la rue des Acacias.",
+          "À votre arrivée, ALPHA présente une plaie à l'arcade et affirme que son voisin CHARLIE l'a frappé après un différend de bruit. Plusieurs résidents sont sur les paliers et crient.",
+          "CHARLIE refuse de reculer malgré vos injonctions, insulte les policiers et tente de remonter vers son appartement en bousculant BRAVO.",
+          "ALPHA demande des secours et une voisine indique avoir vu CHARLIE porter un coup avec une clé tenue dans la main."
+        ],
+        documents: [
+          {
+            title: "Document 1 - Article 222-11 du Code pénal",
+            text: "Les violences ayant entraîné une incapacité totale de travail pendant plus de huit jours sont punies de trois ans d'emprisonnement et de 45 000 euros d'amende."
+          },
+          {
+            title: "Document 2 - Article 222-13 du Code pénal",
+            text: "Les violences sont aggravées lorsqu'elles sont commises avec usage ou menace d'une arme ou sur une personne dépositaire de l'autorité publique."
+          },
+          {
+            title: "Document 3 - Article 433-5 du Code pénal",
+            text: "Constituent un outrage les paroles, gestes ou menaces adressés à une personne dépositaire de l'autorité publique et de nature à porter atteinte à sa dignité ou au respect dû à sa fonction."
+          },
+          {
+            title: "Document 4 - Article 53 du Code de procédure pénale",
+            text: "Est qualifié crime ou délit flagrant le crime ou le délit qui se commet actuellement ou qui vient de se commettre."
+          },
+          {
+            title: "Document 5 - Charte d'accueil du public et des victimes",
+            text: "La victime doit être accueillie avec attention, mise en sécurité, informée de son droit de déposer plainte et orientée vers une prise en charge médicale ou associative adaptée."
+          }
+        ],
+        questions: [
+          {
+            title: "Question 1 - Qualification et urgence",
+            prompt: "Qualifiez juridiquement les faits et indiquez votre première priorité.",
+            model: "En vertu de l'art. 222-11 du Code pénal, les faits sont susceptibles de constituer des violences volontaires, l'ITT devant être fixée médicalement. L'art. 222-13 du Code pénal peut être mobilisé si la clé est retenue comme arme par destination ou si BRAVO a été bousculé en qualité de policier. Ma première priorité est de faire cesser la rixe, d'écarter les voisins et de protéger ALPHA blessé.",
+            keypoints: [
+              { label: "Violences volontaires et ITT à évaluer", keywords: ["violence", "itt", "222-11"] },
+              { label: "Aggravation possible par arme ou policier", keywords: ["222-13", "arme", "depositaire"] },
+              { label: "Priorité à la cessation de la rixe", keywords: ["cesser", "rixe", "proteger"] },
+              { label: "Prise en charge de la victime blessée", keywords: ["alpha", "blesse", "secours"] },
+              { label: "Analyse en flagrance", keywords: ["flagrance", "53", "vient"] }
+            ],
+            docs: ["Document 1", "Document 2", "Document 4"]
+          },
+          {
+            title: "Question 2 - Actions victime et auteur",
+            prompt: "Décrivez les actions à mener pour ALPHA, CHARLIE et les autres résidents.",
+            model: "Conformément à l'art. R.434-18 du CSI, j'interviens sur des violences en employant une force seulement nécessaire et proportionnée. Je sécurise d'abord la cage d'escalier, je sépare ALPHA et CHARLIE, je demande des renforts si le rapport de force l'impose et je fais prendre en charge ALPHA par les secours. Ensuite, je maintiens CHARLIE à distance, je procède aux vérifications utiles sous le contrôle de l'OPJ et je relève les identités des témoins sans les laisser se concerter.",
+            keypoints: [
+              { label: "Séparation des protagonistes", keywords: ["separe", "alpha", "charlie"] },
+              { label: "Sécurisation de la cage d'escalier", keywords: ["cage", "perimetre", "voisins"] },
+              { label: "Secours pour ALPHA", keywords: ["secours", "blesse", "medical"] },
+              { label: "Renforts si nécessaire", keywords: ["renfort", "rapport de force", "cic"] },
+              { label: "Témoins identifiés séparément", keywords: ["temoins", "identifie", "separement"] }
+            ],
+            docs: ["Document 2", "Document 5"]
+          },
+          {
+            title: "Question 3 - Refus d'obtempérer et insultes",
+            prompt: "Comment réagissez-vous au refus de CHARLIE d'obtempérer et à ses insultes ?",
+            model: "En vertu de l'art. 433-5 du Code pénal, les insultes dirigées contre les policiers peuvent caractériser un outrage si elles atteignent la dignité de la fonction. Je formule des injonctions claires, je garde une distance de sécurité et je rends compte au CIC et à l'OPJ. Si CHARLIE persiste, bouscule BRAVO ou tente de fuir alors que la flagrance est caractérisée par l'art. 53 du CPP, je procède à son interpellation dans un cadre proportionné.",
+            keypoints: [
+              { label: "Outrage qualifié par l'article 433-5", keywords: ["433-5", "outrage", "insultes"] },
+              { label: "Injonctions claires et sécurité", keywords: ["injonctions", "distance", "securite"] },
+              { label: "Avis CIC, hiérarchie ou OPJ", keywords: ["cic", "opj", "hierarchie"] },
+              { label: "Interpellation seulement si conditions réunies", keywords: ["interpellation", "conditions", "flagrance"] },
+              { label: "Proportionnalité de la contrainte", keywords: ["proportionne", "force", "necessaire"] }
+            ],
+            docs: ["Document 3", "Document 4"]
+          },
+          {
+            title: "Question 4 - Compte rendu",
+            prompt: "Quels éléments doivent figurer dans votre écrit professionnel ?",
+            model: "En application de l'art. 53 du CPP, je rédige un compte rendu chronologique des faits flagrants constatés dans l'immeuble. J'y mentionne l'heure, l'adresse, les blessures d'ALPHA, les déclarations spontanées, la clé signalée comme arme possible, les insultes de CHARLIE, ses refus d'obtempérer, la bousculade de BRAVO, les témoins identifiés et les secours demandés. Je transmets à l'OPJ sans conclure moi-même à la culpabilité.",
+            keypoints: [
+              { label: "Chronologie complète", keywords: ["chronologique", "heure", "adresse"] },
+              { label: "Blessures et secours", keywords: ["blessures", "secours", "alpha"] },
+              { label: "Propos exacts d'outrage", keywords: ["insultes", "propos", "433-5"] },
+              { label: "Témoins et arme possible", keywords: ["temoins", "cle", "arme"] },
+              { label: "Transmission à l'OPJ", keywords: ["opj", "transmet", "culpabilite"] }
+            ],
+            docs: ["Document 1", "Document 3", "Document 4", "Document 5"]
+          }
+        ],
+        commonErrors: [
+          { bad: "J'arrête le voisin violent.", good: "Je procède à son interpellation si la flagrance de l'art. 53 du CPP et les nécessités de sécurité le justifient." },
+          { bad: "Je laisse les voisins régler leur conflit.", good: "Je fais cesser les violences, je protège la victime et je rends compte à l'OPJ." },
+          { bad: "Les insultes ne comptent pas.", good: "Je relève les propos exacts susceptibles de constituer un outrage au sens de l'art. 433-5 du Code pénal." }
+        ]
+      },
+      {
+        id: "ivresse-manifeste-trottoir",
+        title: "Personne en état d'ivresse manifeste",
+        theme: "Secours, sécurité publique et recherche d'une agression possible",
+        situation: [
+          "Vous êtes gardien de la paix à Xville, indicatif TN 12, en patrouille de nuit avec BRAVO. À 01 h 20, vous découvrez ALPHA allongé sur le trottoir près d'un arrêt de bus.",
+          "ALPHA sent fortement l'alcool, parle de manière incohérente et ne parvient pas à se relever. Un attroupement se forme et gêne la circulation des piétons.",
+          "CHARLIE, passant, affirme avoir vu deux individus pousser ALPHA quelques minutes plus tôt avant de partir vers la gare.",
+          "ALPHA présente une rougeur au visage et ne peut pas dire s'il a perdu son téléphone ou s'il a été agressé."
+        ],
+        documents: [
+          {
+            title: "Document 1 - Article L.3341-1 du Code de la santé publique",
+            text: "Une personne trouvée en état d'ivresse dans les lieux publics est conduite, par mesure de police, au poste le plus voisin ou dans une chambre de sûreté, pour y être retenue jusqu'à ce qu'elle ait recouvré la raison."
+          },
+          {
+            title: "Document 2 - Article 223-6 du Code pénal",
+            text: "Quiconque pouvant empêcher par son action immédiate, sans risque pour lui ou pour les tiers, soit un crime soit un délit contre l'intégrité corporelle de la personne, s'abstient volontairement de le faire est puni. Est également punie l'abstention volontaire de porter assistance à une personne en péril."
+          },
+          {
+            title: "Document 3 - Article 53 du Code de procédure pénale",
+            text: "Il y a flagrance lorsque, dans un temps très voisin de l'action, la personne soupçonnée est poursuivie par la clameur publique ou trouvée en possession d'indices laissant penser à sa participation."
+          },
+          {
+            title: "Document 4 - Article R.434-17 du Code de la sécurité intérieure",
+            text: "Toute personne appréhendée est placée sous la protection des policiers ou des gendarmes. Le policier ayant la garde d'une personne appréhendée est attentif à son état physique et psychologique et prend toutes les mesures possibles pour préserver la vie, la santé et la dignité de cette personne."
+          },
+          {
+            title: "Document 5 - Charte d'accueil du public et des victimes",
+            text: "Toute personne potentiellement victime doit bénéficier d'une écoute attentive, d'une protection immédiate, d'une information sur ses droits et d'une orientation médicale si son état le nécessite."
+          }
+        ],
+        questions: [
+          {
+            title: "Question 1 - Première action",
+            prompt: "Quelle est votre première action et pourquoi ?",
+            model: "En vertu de l'art. L.3341-1 du Code de la santé publique, la situation relève d'une ivresse publique et manifeste si ALPHA est trouvé alcoolisé et incohérent sur la voie publique. Ma première action est néanmoins de vérifier son état vital, de sécuriser le trottoir et de demander un avis médical si la rougeur au visage ou l'incohérence laissent craindre une blessure. Je rends compte au CIC avant toute conduite au poste.",
+            keypoints: [
+              { label: "Ivresse publique et manifeste", keywords: ["ivresse", "l.3341-1", "publique"] },
+              { label: "Vérification de l'état de santé", keywords: ["etat", "medical", "vital"] },
+              { label: "Sécurisation du trottoir", keywords: ["trottoir", "securise", "attroupement"] },
+              { label: "Compte rendu au CIC", keywords: ["cic", "rend compte", "radio"] },
+              { label: "Pas de conduite au poste sans évaluation du danger", keywords: ["poste", "medical", "danger"] }
+            ],
+            docs: ["Document 1", "Document 2", "Document 4"]
+          },
+          {
+            title: "Question 2 - Gestion de la personne et de l'attroupement",
+            prompt: "Quelles actions menez-vous pour ALPHA et pour les tiers ?",
+            model: "En vertu de l'art. 223-6 du Code pénal, je traite d'abord le danger pour ALPHA et pour les tiers. Je crée un périmètre simple, j'éloigne l'attroupement, je demande à BRAVO de recueillir les premiers éléments auprès de CHARLIE et je contacte les secours en cas de doute médical. Si l'état d'ivresse est confirmé et qu'aucune urgence médicale ne s'y oppose, ALPHA peut être conduit au poste ou en chambre de sûreté jusqu'à ce qu'il recouvre la raison.",
+            keypoints: [
+              { label: "Périmètre et dispersion de l'attroupement", keywords: ["perimetre", "attroupement", "eloigne"] },
+              { label: "Secours ou avis médical", keywords: ["secours", "medical", "samu"] },
+              { label: "Répartition avec BRAVO", keywords: ["bravo", "recueille", "elements"] },
+              { label: "Conduite au poste si conditions réunies", keywords: ["poste", "chambre", "raison"] },
+              { label: "Respect de la sécurité des tiers", keywords: ["tiers", "securite", "pietons"] }
+            ],
+            docs: ["Document 1", "Document 4"]
+          },
+          {
+            title: "Question 3 - Agression possible",
+            prompt: "Comment exploitez-vous l'information donnée par CHARLIE sur une agression possible ?",
+            model: "En vertu de l'art. 53 du CPP, l'indication d'une agression récente doit être exploitée comme un possible délit flagrant. Je prends les coordonnées de CHARLIE, je recueille ce qu'il a vu directement, je recherche le téléphone ou des traces de lutte et je diffuse au CIC le signalement et la direction de fuite. Je ne transforme pas automatiquement ALPHA en simple ivresse : son état peut aussi résulter d'une agression ou d'un malaise.",
+            keypoints: [
+              { label: "Hypothèse de délit flagrant", keywords: ["flagrant", "53", "agression"] },
+              { label: "Coordonnées et déclarations de CHARLIE", keywords: ["charlie", "coordonnees", "vu"] },
+              { label: "Recherche d'indices matériels", keywords: ["telephone", "traces", "indices"] },
+              { label: "Diffusion radio du signalement", keywords: ["cic", "signalement", "fuite"] },
+              { label: "Ne pas réduire à l'ivresse", keywords: ["ivresse", "agression", "malaise"] }
+            ],
+            docs: ["Document 2", "Document 3", "Document 5"]
+          },
+          {
+            title: "Question 4 - Écrit et suites",
+            prompt: "Quels éléments consignez-vous dans votre compte rendu ?",
+            model: "Conformément à l'art. L.3341-1 du Code de la santé publique, je consigne les éléments objectifs justifiant l'ivresse manifeste : lieu public, incohérence, impossibilité de se relever et odeur d'alcool. J'ajoute les constatations médicales apparentes, les secours sollicités, l'attroupement, les déclarations de CHARLIE, le signalement des agresseurs possibles et les recherches effectuées. Je transmets l'ensemble à l'OPJ ou à la hiérarchie selon les suites décidées.",
+            keypoints: [
+              { label: "Indices objectifs d'ivresse", keywords: ["incoherent", "alcool", "lieu public"] },
+              { label: "État médical apparent", keywords: ["medical", "rougeur", "secours"] },
+              { label: "Déclarations du témoin", keywords: ["charlie", "declarations", "temoin"] },
+              { label: "Signalement et recherches", keywords: ["signalement", "recherches", "telephone"] },
+              { label: "Transmission hiérarchique ou OPJ", keywords: ["opj", "hierarchie", "transmet"] }
+            ],
+            docs: ["Document 1", "Document 3", "Document 5"]
+          }
+        ],
+        commonErrors: [
+          { bad: "Il est ivre, je le laisse dormir.", good: "Je vérifie son état, je porte assistance au sens de l'art. 223-6 du Code pénal et je sécurise la voie publique." },
+          { bad: "Je le mets directement en cellule.", good: "Je fais évaluer le risque médical avant une conduite au poste prévue par l'art. L.3341-1 du Code de la santé publique." },
+          { bad: "Le témoin exagère sûrement.", good: "J'exploite le témoignage comme un indice possible de flagrance au sens de l'art. 53 du CPP." }
+        ]
+      },
+      {
+        id: "vol-tire-centre-commercial",
+        title: "Vol à la tire en flagrant délit",
+        theme: "Flagrance, poursuite et restitution d'un téléphone",
+        situation: [
+          "Vous êtes gardien de la paix à Xville, indicatif TN 34, en patrouille pédestre dans le centre commercial Grand Nord.",
+          "CHARLIE, agent de sécurité, vous signale qu'il vient de voir ALPHA sortir le téléphone de la poche du manteau d'une cliente, puis le glisser dans son sac.",
+          "BRAVO, la victime, indique qu'elle ne retrouve plus son téléphone et désigne ALPHA qui prend la fuite vers les escalators.",
+          "Vous rattrapez ALPHA à la sortie du parking. Le téléphone sonne dans son sac lorsque BRAVO compose son numéro."
+        ],
+        documents: [
+          {
+            title: "Document 1 - Article 311-1 du Code pénal",
+            text: "Le vol est la soustraction frauduleuse de la chose d'autrui."
+          },
+          {
+            title: "Document 2 - Article 311-3 du Code pénal",
+            text: "Le vol est puni de trois ans d'emprisonnement et de 45 000 euros d'amende."
+          },
+          {
+            title: "Document 3 - Article 53 du Code de procédure pénale",
+            text: "Le délit flagrant est celui qui se commet actuellement ou qui vient de se commettre."
+          },
+          {
+            title: "Document 4 - Article 73 du Code de procédure pénale",
+            text: "Dans les cas de crime flagrant ou de délit flagrant puni d'emprisonnement, toute personne a qualité pour en appréhender l'auteur et le conduire devant l'officier de police judiciaire le plus proche."
+          },
+          {
+            title: "Document 5 - Charte d'accueil du public et des victimes",
+            text: "La victime d'une infraction doit être accueillie avec considération, informée de son droit de déposer plainte et orientée vers les démarches utiles."
+          }
+        ],
+        questions: [
+          {
+            title: "Question 1 - Qualification juridique",
+            prompt: "Qualifiez les faits et expliquez la flagrance.",
+            model: "En vertu de l'art. 311-1 du Code pénal, les faits sont susceptibles de constituer un vol par soustraction frauduleuse du téléphone de la victime. L'art. 53 du CPP caractérise la flagrance car le témoin décrit un fait qui vient de se commettre, la victime confirme la disparition et ALPHA prend immédiatement la fuite. Le téléphone qui sonne dans son sac constitue un indice matériel à préserver.",
+            keypoints: [
+              { label: "Vol par soustraction frauduleuse", keywords: ["vol", "soustraction", "311-1"] },
+              { label: "Flagrance au sens de l'article 53", keywords: ["flagrance", "53", "vient"] },
+              { label: "Fuite immédiate", keywords: ["fuite", "escalators", "parking"] },
+              { label: "Indice matériel du téléphone", keywords: ["telephone", "sac", "indice"] },
+              { label: "Témoin agent de sécurité", keywords: ["charlie", "temoin", "securite"] }
+            ],
+            docs: ["Document 1", "Document 2", "Document 3"]
+          },
+          {
+            title: "Question 2 - Actions victime et auteur",
+            prompt: "Quelles actions menez-vous pour la victime et pour ALPHA ?",
+            model: "En application de l'art. 73 du CPP, je procède à l'interpellation d'ALPHA si les conditions du délit flagrant puni d'emprisonnement sont réunies. Je sécurise d'abord la sortie, je récupère le téléphone sans le manipuler inutilement, je sépare ALPHA de la victime et de CHARLIE, puis j'avise l'OPJ. En parallèle, je rassure la victime, je recueille son identité, je l'informe de son droit de plainte et je préserve les images de vidéoprotection du centre.",
+            keypoints: [
+              { label: "Interpellation en flagrance", keywords: ["interpellation", "73", "flagrant"] },
+              { label: "Séparation des personnes", keywords: ["separe", "victime", "charlie"] },
+              { label: "Préservation du téléphone", keywords: ["telephone", "preserve", "manipuler"] },
+              { label: "Avis OPJ", keywords: ["opj", "avise", "delai"] },
+              { label: "Accueil et plainte de la victime", keywords: ["victime", "plainte", "informe"] }
+            ],
+            docs: ["Document 4", "Document 5"]
+          },
+          {
+            title: "Question 3 - Preuves disponibles",
+            prompt: "Quels éléments de preuve devez-vous préserver ?",
+            model: "Conformément à l'art. 53 du CPP, je préserve les indices du délit flagrant dans leur ordre d'apparition. Je note l'heure, le lieu, le chemin de fuite, les déclarations de CHARLIE, les propos de la victime et les conditions dans lesquelles le téléphone a été retrouvé. Je demande la sauvegarde urgente des images du centre commercial par l'intermédiaire de l'OPJ ou selon les consignes du service.",
+            keypoints: [
+              { label: "Heure, lieu et fuite", keywords: ["heure", "lieu", "fuite"] },
+              { label: "Déclarations du témoin et de la victime", keywords: ["charlie", "victime", "declarations"] },
+              { label: "Téléphone retrouvé", keywords: ["telephone", "retrouve", "sac"] },
+              { label: "Vidéoprotection", keywords: ["video", "images", "sauvegarde"] },
+              { label: "Cadre OPJ pour exploitation", keywords: ["opj", "exploitation", "consignes"] }
+            ],
+            docs: ["Document 3", "Document 4"]
+          },
+          {
+            title: "Question 4 - Limites du rôle GPX",
+            prompt: "Que ne devez-vous pas faire dans cette situation ?",
+            model: "En vertu de l'art. 73 du CPP, mon rôle est d'appréhender et de conduire ALPHA devant l'OPJ, pas de décider seul des suites judiciaires. Je ne fouille pas le sac hors cadre légal, je ne restitue pas définitivement le téléphone sans instruction, je ne confronte pas la victime et le mis en cause, et je n'annonce pas une culpabilité certaine. Je rends compte précisément et je me conforme aux décisions de l'OPJ.",
+            keypoints: [
+              { label: "Ne pas décider seul des suites", keywords: ["opj", "suites", "decide"] },
+              { label: "Pas de fouille hors cadre", keywords: ["fouille", "cadre", "legal"] },
+              { label: "Pas de restitution sans instruction", keywords: ["restitution", "instruction", "telephone"] },
+              { label: "Pas de confrontation improvisée", keywords: ["confrontation", "victime", "mis en cause"] },
+              { label: "Neutralité sur la culpabilité", keywords: ["culpabilite", "neutralite", "suspect"] }
+            ],
+            docs: ["Document 3", "Document 4", "Document 5"]
+          }
+        ],
+        commonErrors: [
+          { bad: "J'arrête le suspect.", good: "Je procède à son interpellation en flagrance au sens de l'art. 53 du CPP et de l'art. 73 du CPP." },
+          { bad: "Je rends tout de suite le téléphone à la victime.", good: "Je préserve le téléphone comme élément matériel et j'attends les instructions de l'OPJ." },
+          { bad: "Je fais avouer ALPHA sur place.", good: "Je recueille les éléments objectifs et je conduis la personne devant l'OPJ." }
+        ]
+      },
+      {
+        id: "accident-delit-fuite-alcool",
+        title: "Accident de la route avec délit de fuite",
+        theme: "Secours, constatations routières et conducteur alcoolisé",
+        situation: [
+          "Vous êtes gardien de la paix à Xville, indicatif TN 08, engagé avec BRAVO sur un accident boulevard Victor-Hugo à 19 h 10.",
+          "À votre arrivée, ALPHA est blessée à la jambe près d'un scooter renversé. Le véhicule impliqué a pris la fuite en direction du parc municipal.",
+          "CHARLIE et un autre témoin ont relevé la plaque AB-123-CD et décrivent une citadine grise avec le rétroviseur droit cassé.",
+          "Dix minutes plus tard, BRAVO retrouve à proximité un véhicule correspondant. Le conducteur fuyard sent l'alcool et titube."
+        ],
+        documents: [
+          {
+            title: "Document 1 - Article L.231-1 du Code de la route",
+            text: "Le fait, pour tout conducteur d'un véhicule sachant qu'il vient de causer ou d'occasionner un accident, de ne pas s'arrêter et de tenter ainsi d'échapper à la responsabilité pénale ou civile qu'il peut avoir encourue constitue le délit de fuite."
+          },
+          {
+            title: "Document 2 - Article L.234-1 du Code de la route",
+            text: "Le fait de conduire un véhicule sous l'empire d'un état alcoolique caractérisé par une concentration d'alcool égale ou supérieure aux seuils légaux est puni par la loi."
+          },
+          {
+            title: "Document 3 - Article 223-6 du Code pénal",
+            text: "L'abstention volontaire de porter assistance à une personne en péril est punie lorsque l'assistance pouvait être apportée sans risque pour soi ou pour les tiers."
+          },
+          {
+            title: "Document 4 - Article 53 du Code de procédure pénale",
+            text: "Le délit flagrant est celui qui vient de se commettre. La personne peut être trouvée, dans un temps très voisin, en possession d'indices laissant penser à sa participation."
+          },
+          {
+            title: "Document 5 - Charte d'accueil du public et des victimes",
+            text: "La victime blessée doit être protégée, secourue, informée de ses droits et orientée vers une prise en charge médicale et procédurale."
+          }
+        ],
+        questions: [
+          {
+            title: "Question 1 - Priorité immédiate",
+            prompt: "Quelle est votre première priorité sur les lieux de l'accident ?",
+            model: "En vertu de l'art. 223-6 du Code pénal, la situation impose d'abord l'assistance à ALPHA blessée et la sécurisation de l'accident. Je protège la zone, je fais ralentir la circulation, je sollicite les secours et je m'enquiers de l'état de la victime. La recherche du conducteur fuyard vient ensuite, sans abandonner la victime ni exposer les tiers.",
+            keypoints: [
+              { label: "Assistance à personne en péril", keywords: ["223-6", "assistance", "blessee"] },
+              { label: "Sécurisation de la circulation", keywords: ["circulation", "securise", "zone"] },
+              { label: "Secours", keywords: ["secours", "samu", "pompiers"] },
+              { label: "Ne pas abandonner la victime", keywords: ["victime", "alpha", "abandonner"] },
+              { label: "Recherche ensuite du fuyard", keywords: ["fuyard", "ensuite", "recherche"] }
+            ],
+            docs: ["Document 3", "Document 5"]
+          },
+          {
+            title: "Question 2 - Qualifications",
+            prompt: "Quelles qualifications envisagez-vous concernant le conducteur retrouvé ?",
+            model: "Conformément à l'art. L.231-1 du Code de la route, les faits peuvent constituer un délit de fuite si le conducteur savait avoir occasionné l'accident et ne s'est pas arrêté. L'art. L.234-1 du Code de la route impose aussi d'envisager la conduite sous l'empire d'un état alcoolique si le dépistage confirme les signes observés. L'art. 53 du CPP permet de raisonner en flagrance car le véhicule, la plaque et le rétroviseur cassé sont retrouvés dans un temps très voisin.",
+            keypoints: [
+              { label: "Délit de fuite", keywords: ["l.231-1", "delit de fuite", "arreter"] },
+              { label: "Alcoolémie routière", keywords: ["l.234-1", "alcool", "depistage"] },
+              { label: "Flagrance par indices proches", keywords: ["53", "flagrance", "indices"] },
+              { label: "Plaque et rétroviseur cassé", keywords: ["plaque", "retroviseur", "vehicule"] },
+              { label: "Qualification sous réserve des vérifications", keywords: ["sous reserve", "verifications", "confirme"] }
+            ],
+            docs: ["Document 1", "Document 2", "Document 4"]
+          },
+          {
+            title: "Question 3 - Actions envers victime et conducteur",
+            prompt: "Décrivez les actions concrètes concernant ALPHA et le conducteur alcoolisé.",
+            model: "En application de l'art. L.234-1 du Code de la route, je fais procéder au dépistage de l'alcoolémie dans le cadre prévu par le service et sous l'autorité compétente. Chronologiquement, je maintiens la protection d'ALPHA, je recueille les témoins, je sécurise le véhicule retrouvé, je contrôle le conducteur et j'avise l'OPJ. Si les conditions de flagrance et de sécurité sont réunies, je procède à l'interpellation, sans décider moi-même de la garde à vue.",
+            keypoints: [
+              { label: "Dépistage alcoolémie", keywords: ["depistage", "alcool", "l.234-1"] },
+              { label: "Protection de la victime maintenue", keywords: ["alpha", "victime", "protection"] },
+              { label: "Témoins recueillis", keywords: ["temoins", "charlie", "recueille"] },
+              { label: "Avis OPJ", keywords: ["opj", "avise", "autorite"] },
+              { label: "Interpellation sans décider de la GAV", keywords: ["interpellation", "garde a vue", "decide"] }
+            ],
+            docs: ["Document 2", "Document 4", "Document 5"]
+          },
+          {
+            title: "Question 4 - Procédure",
+            prompt: "Quels éléments doivent être consignés pour préserver la procédure ?",
+            model: "En vertu de l'art. L.231-1 du Code de la route, je consigne les éléments reliant le conducteur à la fuite : heure de l'accident, lieu, plaque relevée, description du véhicule, dégâts compatibles et délai de découverte. J'ajoute l'état d'ALPHA, les secours, les déclarations de CHARLIE, les signes d'alcoolisation, les résultats des vérifications et les avis à l'OPJ. La rédaction reste factuelle et chronologique.",
+            keypoints: [
+              { label: "Lien entre accident et véhicule", keywords: ["plaque", "degats", "delai"] },
+              { label: "État de la victime et secours", keywords: ["alpha", "secours", "etat"] },
+              { label: "Déclarations des témoins", keywords: ["charlie", "temoins", "declarations"] },
+              { label: "Signes d'alcoolisation", keywords: ["alcool", "titube", "depistage"] },
+              { label: "Rédaction factuelle", keywords: ["factuelle", "chronologique", "opj"] }
+            ],
+            docs: ["Document 1", "Document 2", "Document 4", "Document 5"]
+          }
+        ],
+        commonErrors: [
+          { bad: "Je poursuis tout de suite le fuyard.", good: "Je sécurise d'abord la victime et la circulation, puis je diffuse les éléments de recherche." },
+          { bad: "Il est coupable de délit de fuite.", good: "Les faits sont susceptibles de constituer un délit de fuite au sens de l'art. L.231-1 du Code de la route." },
+          { bad: "Je le place en garde à vue.", good: "J'avise l'OPJ, seul compétent pour décider du placement en garde à vue." }
+        ]
+      },
+      {
+        id: "manifestation-non-declaree-projectiles",
+        title: "Trouble à l'ordre public lors d'une manifestation",
+        theme: "Rassemblement non déclaré, projectiles et interpellation proportionnée",
+        situation: [
+          "Vous êtes gardien de la paix à Xville, indicatif UMO 3, engagé avec BRAVO en maintien de l'ordre sur la place de la République.",
+          "Un rassemblement non déclaré réunit environ 120 personnes. Le chef de dispositif signale que la circulation du tramway est interrompue.",
+          "ALPHA, visage découvert, insulte les forces de l'ordre, jette une canette pleine en direction d'un équipage puis ramasse des pavés décoratifs.",
+          "Lorsque BRAVO et vous recevez l'ordre de l'extraire, ALPHA tente de fuir dans la foule pendant que CHARLIE filme et crie aux autres de bloquer le passage."
+        ],
+        documents: [
+          {
+            title: "Document 1 - Article L.211-1 du Code de la sécurité intérieure",
+            text: "Sont soumis à l'obligation d'une déclaration préalable tous cortèges, défilés, rassemblements de personnes et, d'une façon générale, toutes manifestations sur la voie publique."
+          },
+          {
+            title: "Document 2 - Article 431-3 du Code pénal",
+            text: "Constitue un attroupement tout rassemblement de personnes sur la voie publique ou dans un lieu public susceptible de troubler l'ordre public."
+          },
+          {
+            title: "Document 3 - Article 222-13 du Code pénal",
+            text: "Les violences sont aggravées lorsqu'elles sont commises avec usage ou menace d'une arme ou sur une personne dépositaire de l'autorité publique."
+          },
+          {
+            title: "Document 4 - Article 53 du Code de procédure pénale",
+            text: "Le crime ou délit flagrant est celui qui se commet actuellement ou qui vient de se commettre."
+          },
+          {
+            title: "Document 5 - Article R.434-18 du Code de la sécurité intérieure",
+            text: "Le policier emploie la force seulement lorsque c'est nécessaire et de façon proportionnée au but à atteindre ou à la gravité de la menace."
+          }
+        ],
+        questions: [
+          {
+            title: "Question 1 - Cadre juridique",
+            prompt: "Qualifiez la situation et les faits reprochés à ALPHA.",
+            model: "Conformément à l'art. L.211-1 du CSI, le rassemblement sur la voie publique relève du régime de déclaration préalable. L'art. 431-3 du Code pénal permet de qualifier l'attroupement s'il trouble l'ordre public, notamment par l'interruption du tramway et les tensions. Pour ALPHA, le jet d'une canette vers des policiers peut caractériser des violences aggravées par l'art. 222-13 du Code pénal, sous réserve des constatations.",
+            keypoints: [
+              { label: "Manifestation soumise à déclaration", keywords: ["l.211-1", "declaration", "manifestation"] },
+              { label: "Attroupement troublant l'ordre public", keywords: ["431-3", "attroupement", "ordre public"] },
+              { label: "Violences aggravées contre policiers", keywords: ["222-13", "violence", "policiers"] },
+              { label: "Canette comme arme possible", keywords: ["canette", "arme", "projectile"] },
+              { label: "Réserve sur les constatations", keywords: ["reserve", "constatations", "susceptible"] }
+            ],
+            docs: ["Document 1", "Document 2", "Document 3"]
+          },
+          {
+            title: "Question 2 - Actions dans l'ordre",
+            prompt: "Comment intervenez-vous face au jet de projectiles et à la tentative de fuite ?",
+            model: "En vertu de l'art. R.434-18 du CSI, l'intervention doit rester nécessaire et proportionnée au danger créé par les projectiles. Je me conforme d'abord aux ordres du chef de dispositif, je protège les tiers, je progresse avec BRAVO, puis je procède à l'extraction d'ALPHA si elle est possible sans désorganiser le dispositif. Une fois extrait, je le sécurise, je l'éloigne de la foule et j'avise l'OPJ.",
+            keypoints: [
+              { label: "Respect des ordres du chef de dispositif", keywords: ["chef", "ordres", "dispositif"] },
+              { label: "Protection des tiers", keywords: ["tiers", "foule", "protection"] },
+              { label: "Extraction coordonnée", keywords: ["extraction", "bravo", "coordonne"] },
+              { label: "Force proportionnée", keywords: ["proportionnee", "necessaire", "force"] },
+              { label: "Avis OPJ après sécurisation", keywords: ["opj", "securise", "avise"] }
+            ],
+            docs: ["Document 4", "Document 5"]
+          },
+          {
+            title: "Question 3 - CHARLIE filme et gêne le passage",
+            prompt: "Quelle réaction adoptez-vous face à CHARLIE ?",
+            model: "Conformément à l'art. R.434-18 du CSI, je distingue la captation d'images d'une entrave concrète à l'intervention. Filmer ne justifie pas en soi une contrainte ; en revanche, appeler à bloquer le passage peut aggraver le risque pour les policiers et les tiers. Je lui ordonne clairement de rester à distance, je signale son comportement à la hiérarchie et je n'agis contre lui que si l'entrave ou le danger est caractérisé.",
+            keypoints: [
+              { label: "Distinction filmer / entraver", keywords: ["filmer", "entrave", "distingue"] },
+              { label: "Injonction de distance", keywords: ["distance", "injonction", "rester"] },
+              { label: "Risque pour policiers et tiers", keywords: ["risque", "tiers", "policiers"] },
+              { label: "Compte rendu hiérarchique", keywords: ["hierarchie", "signale", "rend compte"] },
+              { label: "Action seulement si danger caractérisé", keywords: ["danger", "caracterise", "seulement"] }
+            ],
+            docs: ["Document 5"]
+          },
+          {
+            title: "Question 4 - Éléments de procédure",
+            prompt: "Que devez-vous transmettre après l'intervention ?",
+            model: "En application de l'art. 53 du CPP, je transmets les éléments objectifs du délit flagrant : heure, lieu, ordre reçu, comportement d'ALPHA, nature des projectiles, direction du jet, policiers visés, tentative de fuite et conditions d'extraction. Je mentionne aussi le contexte d'attroupement de l'art. 431-3 du Code pénal, la gêne du tramway, les images disponibles et les témoins. Le compte rendu reste chronologique et validé par la chaîne hiérarchique.",
+            keypoints: [
+              { label: "Éléments objectifs du jet", keywords: ["projectile", "direction", "policiers"] },
+              { label: "Ordre reçu et extraction", keywords: ["ordre", "extraction", "fuite"] },
+              { label: "Contexte d'attroupement", keywords: ["431-3", "attroupement", "tramway"] },
+              { label: "Images et témoins", keywords: ["images", "temoins", "video"] },
+              { label: "Validation hiérarchique", keywords: ["hierarchique", "chaine", "compte rendu"] }
+            ],
+            docs: ["Document 2", "Document 3", "Document 4", "Document 5"]
+          }
+        ],
+        commonErrors: [
+          { bad: "Je disperse seul la manifestation.", good: "Je me conforme aux ordres du chef de dispositif et j'agis dans mon rôle de GPX." },
+          { bad: "Je confisque le téléphone de CHARLIE parce qu'il filme.", good: "Je distingue le fait de filmer d'une entrave réelle et je rends compte." },
+          { bad: "Je fonce dans la foule pour l'attraper.", good: "Je procède à une extraction coordonnée, nécessaire et proportionnée au sens de l'art. R.434-18 du CSI." }
+        ]
+      },
+      {
+        id: "disparition-inquietante-adolescente",
+        title: "Disparition inquiétante d'une adolescente",
+        theme: "Accueil de famille, recherches urgentes et limites du rôle GPX",
+        situation: [
+          "Vous êtes gardien de la paix à l'accueil du commissariat de Xville. À 18 h 30, ALPHA et BRAVO signalent que leur fille CHARLIE, 15 ans, n'est pas rentrée depuis la veille.",
+          "Les parents indiquent une dispute récente et pensent à une fugue, mais CHARLIE n'a plus donné signe de vie depuis 24 h et son téléphone est éteint.",
+          "Une amie a reçu un message inquiétant : CHARLIE disait vouloir rejoindre un homme majeur rencontré en ligne près de la gare de Xville.",
+          "Les parents apportent une photo récente, le signalement vestimentaire et les identifiants de réseaux sociaux connus."
+        ],
+        documents: [
+          {
+            title: "Document 1 - Article 74-1 du Code de procédure pénale",
+            text: "En cas de disparition d'un mineur ou d'une personne protégée, les officiers de police judiciaire, assistés le cas échéant des agents de police judiciaire, peuvent procéder aux actes nécessaires à la recherche sur instructions du procureur de la République."
+          },
+          {
+            title: "Document 2 - Article 15-3 du Code de procédure pénale",
+            text: "Les officiers et agents de police judiciaire sont tenus de recevoir les plaintes déposées par les victimes d'infractions et de les transmettre au service compétent."
+          },
+          {
+            title: "Document 3 - Article 223-6 du Code pénal",
+            text: "L'abstention volontaire de porter assistance à une personne en péril est punie lorsque l'assistance pouvait être apportée sans risque pour soi ou pour les tiers."
+          },
+          {
+            title: "Document 4 - Dispositif Alerte enlèvement",
+            text: "L'alerte enlèvement est déclenchée par le procureur lorsque la victime est mineure, que l'enlèvement est avéré, que la vie ou l'intégrité physique est en danger, que des informations utiles permettent de localiser l'enfant et que les parents consentent à la diffusion."
+          },
+          {
+            title: "Document 5 - Charte d'accueil du public et des victimes",
+            text: "L'accueil impose écoute, confidentialité, recueil des éléments utiles, information sur les droits et orientation vers les interlocuteurs compétents."
+          }
+        ],
+        questions: [
+          {
+            title: "Question 1 - Qualification de la situation",
+            prompt: "Comment qualifiez-vous cette disparition et quels éléments la rendent inquiétante ?",
+            model: "En vertu de l'art. 74-1 du CPP, la disparition d'une mineure de 15 ans doit être traitée comme une disparition inquiétante nécessitant des recherches rapides. La fugue possible ne suffit pas à écarter le danger, car CHARLIE est mineure, absente depuis 24 h, injoignable et susceptible de rejoindre un homme majeur rencontré en ligne. Je qualifie donc la situation avec prudence et j'alerte immédiatement l'OPJ.",
+            keypoints: [
+              { label: "Mineure disparue", keywords: ["mineure", "15", "74-1"] },
+              { label: "Disparition inquiétante malgré fugue possible", keywords: ["inquietante", "fugue", "danger"] },
+              { label: "Téléphone éteint et délai", keywords: ["telephone", "24", "injoignable"] },
+              { label: "Risque lié à un majeur rencontré en ligne", keywords: ["majeur", "ligne", "gare"] },
+              { label: "Alerte OPJ immédiate", keywords: ["opj", "alerte", "immediat"] }
+            ],
+            docs: ["Document 1", "Document 3"]
+          },
+          {
+            title: "Question 2 - Accueil et recueil des informations",
+            prompt: "Quelles informations recueillez-vous auprès des parents ?",
+            model: "Conformément à l'art. 15-3 du CPP et à la charte d'accueil, je reçois les parents sans délai et dans un cadre confidentiel. Je recueille chronologiquement l'identité complète de CHARLIE, photo, tenue, dernier lieu connu, habitudes, contacts, réseaux sociaux, santé, argent disponible, message inquiétant et identité éventuelle de l'homme majeur. Je transmets immédiatement ces éléments à l'OPJ pour orientation des recherches.",
+            keypoints: [
+              { label: "Accueil sans délai et confidentialité", keywords: ["15-3", "confidentiel", "accueil"] },
+              { label: "Signalement complet", keywords: ["photo", "tenue", "signalement"] },
+              { label: "Dernier lieu et contacts", keywords: ["dernier", "contacts", "habitudes"] },
+              { label: "Réseaux sociaux et message", keywords: ["reseaux", "message", "majeur"] },
+              { label: "Transmission OPJ", keywords: ["opj", "transmet", "recherches"] }
+            ],
+            docs: ["Document 2", "Document 5"]
+          },
+          {
+            title: "Question 3 - Dispositifs disponibles",
+            prompt: "Quels dispositifs ou recherches peuvent être envisagés sans dépasser votre rôle ?",
+            model: "En application de l'art. 74-1 du CPP, les recherches sont conduites sur instructions du procureur et de l'OPJ, avec l'appui possible du GPX. Je peux diffuser le signalement par radio, vérifier les lieux proches comme la gare selon les instructions, exploiter les coordonnées remises et solliciter la conservation d'éléments utiles par la voie hiérarchique. L'alerte enlèvement du document 4 relève du procureur et ne peut être décidée par moi.",
+            keypoints: [
+              { label: "Recherches sous instructions OPJ/procureur", keywords: ["74-1", "opj", "procureur"] },
+              { label: "Diffusion radio du signalement", keywords: ["radio", "signalement", "diffuse"] },
+              { label: "Vérification des lieux pertinents", keywords: ["gare", "verifie", "lieux"] },
+              { label: "Conservation des éléments numériques", keywords: ["conservation", "reseaux", "elements"] },
+              { label: "Alerte enlèvement non décidée par GPX", keywords: ["alerte enlevement", "procureur", "decidee"] }
+            ],
+            docs: ["Document 1", "Document 4"]
+          },
+          {
+            title: "Question 4 - Question de fond",
+            prompt: "Pourquoi ne faut-il pas traiter cette situation comme une simple fugue ?",
+            model: "Conformément à l'art. 223-6 du Code pénal, le risque de péril impose une réaction dès lors qu'une mineure peut être en danger. La notion de fugue n'efface ni la minorité, ni l'absence prolongée, ni le contact avec un majeur inconnu. Je reste dans mon rôle : j'écoute les parents, je recueille les faits, je rends compte à l'OPJ et je participe aux recherches ordonnées, sans banaliser ni dramatiser sans élément.",
+            keypoints: [
+              { label: "Risque de péril", keywords: ["223-6", "peril", "danger"] },
+              { label: "Minorité déterminante", keywords: ["mineure", "minorite", "15"] },
+              { label: "Contact avec majeur inconnu", keywords: ["majeur", "inconnu", "ligne"] },
+              { label: "Ne pas banaliser", keywords: ["banaliser", "fugue", "simple"] },
+              { label: "Rôle GPX et OPJ", keywords: ["gpx", "opj", "recherches"] }
+            ],
+            docs: ["Document 1", "Document 3", "Document 5"]
+          }
+        ],
+        commonErrors: [
+          { bad: "Elle a fugué, il faut attendre.", good: "Je traite la disparition d'une mineure comme inquiétante au regard de l'art. 74-1 du CPP." },
+          { bad: "Je déclenche l'alerte enlèvement.", good: "Je transmets les éléments à l'OPJ ; le déclenchement relève du procureur selon les critères officiels." },
+          { bad: "Je conseille seulement aux parents d'appeler ses amis.", good: "Je recueille un signalement complet, je rends compte et je participe aux recherches ordonnées." }
+        ]
       }
     ];
+
+    const caseStyleEnhancements = {
+      "violences-conjugales": {
+        models: [
+          "En vertu de l'art. 222-13 du Code pénal, les faits sont susceptibles de constituer des violences volontaires aggravées par la qualité de conjoint ou concubin. La gifle, la poussée et la trace visible caractérisent des violences physiques, même si l'ITT reste à fixer. Conformément à l'art. 222-14-3 du Code pénal, les insultes répétées, le contrôle du téléphone et l'isolement peuvent aussi constituer des violences psychologiques. Je relève ces éléments, la présence de l'enfant, les appels de BRAVO et le témoignage de CHARLIE, puis je transmets à l'OPJ sans conclure à la culpabilité.",
+          "En vertu de l'art. 15-3 du CPP, je suis tenu de recevoir la plainte d'ALPHA et de la transmettre au service compétent. Je la mets d'abord en sécurité avec l'enfant, dans un lieu confidentiel, puis j'empêche tout contact avec BRAVO et j'avise ma hiérarchie et l'OPJ. Ensuite, je constate les traces visibles, j'évalue le danger, je propose l'UMJ pour fixer l'ITT et j'oriente ALPHA vers l'aide aux victimes prévue par le dossier.",
+          "Conformément à l'art. R.434-11 du CSI, je protège prioritairement la victime et j'agis avec discernement face à BRAVO. Je ne le laisse pas approcher ALPHA, je vais au contact avec un collègue, je lui donne des consignes claires et je rends compte à l'OPJ. Si BRAVO menace, outrage ou tente de forcer l'accès, j'adapte la réponse dans un cadre légal et proportionné, puis je consigne ses propos et appels.",
+          "En vertu de l'art. 222-13 du Code pénal, je cite l'aggravation liée au conjoint et, conformément à l'art. 222-14-3 du Code pénal, les violences psychologiques. Mon compte rendu reprend dans l'ordre les déclarations d'ALPHA, les traces constatées, la présence de l'enfant, les appels de BRAVO, le témoignage de CHARLIE et les mesures prises : plainte, UMJ, information OPJ/parquet et aide aux victimes. La rédaction reste neutre, factuelle et chronologique."
+        ],
+        commonErrors: [
+          { bad: "Elle hésite, donc je ne prends pas plainte.", good: "Je reçois la plainte en vertu de l'art. 15-3 du CPP et je sécurise la victime." },
+          { bad: "Je décide que BRAVO est coupable.", good: "Je relève des faits susceptibles de violences au sens de l'art. 222-13 du Code pénal et je transmets à l'OPJ." },
+          { bad: "Je laisse BRAVO parler à ALPHA pour calmer la situation.", good: "Je sépare les personnes et je protège la victime avant tout contact." }
+        ]
+      },
+      "agression-sexuelle-transports": {
+        models: [
+          "En vertu de l'art. 222-22 du Code pénal, les faits sont susceptibles de constituer une agression sexuelle si l'attouchement a été imposé par surprise dans le tramway. L'art. 222-27 du Code pénal fixe la peine de base et l'art. 222-28 du Code pénal prévoit l'aggravation liée au transport collectif. Je rattache ces textes aux déclarations d'ALPHA, au lieu des faits, aux témoins et aux images disponibles, sans décider seul de la qualification définitive.",
+          "En vertu de l'art. 222-22 du Code pénal, je traite ALPHA comme une victime potentielle d'atteinte sexuelle et je préserve immédiatement sa parole et les preuves. Je l'isole dans un lieu confidentiel, je l'informe de son droit de plainte et d'une prise en charge médicale ou psychologique, puis je relève l'horaire, la rame, la station, le signalement, les témoins BRAVO et CHARLIE et la vidéoprotection. J'avise l'OPJ pour les réquisitions utiles.",
+          "En application de l'art. 73 du CPP, BRAVO et CHARLIE pouvaient appréhender l'auteur présumé d'un délit flagrant puni d'emprisonnement. Je sécurise d'abord la scène, je sépare l'homme de la victime et des témoins, puis je procède aux vérifications d'identité et j'avise l'OPJ. Je reste neutre face à ses dénégations et je veille au respect de ses droits.",
+          "En vertu de l'art. 222-22 du Code pénal, mon compte rendu qualifie les faits comme une possible agression sexuelle par surprise. Il mentionne chronologiquement l'heure, la ligne, la station, les déclarations d'ALPHA, l'intervention de BRAVO et CHARLIE, l'identité ou le signalement de l'auteur présumé, la contestation, les images à sauvegarder et les mesures de prise en charge. J'y ajoute les références aux art. 222-27, 222-28 du Code pénal et 73 du CPP."
+        ],
+        commonErrors: [
+          { bad: "C'était juste un contact dans la foule.", good: "Je qualifie les faits au regard de l'art. 222-22 du Code pénal et je relève les éléments objectifs." },
+          { bad: "Je fais raconter les faits devant tout le monde.", good: "Je recueille la parole de la victime dans un cadre confidentiel." },
+          { bad: "Je récupère moi-même la vidéo sur le téléphone du témoin.", good: "J'avise l'OPJ pour une exploitation régulière des images." }
+        ]
+      },
+      "corruption-fourriere": {
+        noVictim: true,
+        models: [
+          "En vertu de l'art. 433-1 du Code pénal, la remise de deux billets pour éviter la fourrière est susceptible de constituer une corruption active. ALPHA propose un avantage à un policier dépositaire de l'autorité publique pour qu'il s'abstienne d'un acte de sa fonction. Je rappelle aussi l'art. 432-11 du Code pénal : accepter l'argent exposerait le policier à une corruption passive. Je refuse donc clairement et je trace l'incident.",
+          "Conformément à l'art. R.434-9 du CSI, je refuse immédiatement tout avantage de nature à compromettre mon impartialité. Je ne plaisante pas, je ne négocie pas, je maintiens la mise en fourrière si elle est légalement justifiée et je préserve les billets selon les consignes de l'OPJ. Ensuite, j'informe BRAVO, ma hiérarchie et l'OPJ, puis je consigne les paroles exactes d'ALPHA.",
+          "Conformément à l'art. R.434-9 du CSI, je protège la probité de l'intervention par une traçabilité complète. Je recueille le témoignage de BRAVO, je prends les coordonnées de CHARLIE et je signale l'existence de la vidéo à l'OPJ pour une remise ou réquisition régulière. Je note l'heure, le lieu, les paroles d'ALPHA, mon refus et la continuité de la procédure de fourrière.",
+          "En vertu de l'art. 433-1 du Code pénal, l'écrit mentionne la proposition d'argent destinée à faire obstacle à un acte de fonction. Il reprend le motif initial de fourrière prévu par l'art. L.325-1 du Code de la route, l'heure, le lieu, les billets, les paroles exactes, mon refus, les témoins BRAVO et CHARLIE, la vidéo et les avis hiérarchiques. La rédaction reste factuelle et sans jugement moral."
+        ],
+        commonErrors: [
+          { bad: "Je garde l'argent comme preuve sans rien dire.", good: "Je refuse l'avantage et j'avise l'OPJ pour préserver l'élément matériel dans un cadre régulier." },
+          { bad: "Ce n'est pas grave, seulement 100 euros.", good: "Je qualifie la proposition au regard de l'art. 433-1 du Code pénal." },
+          { bad: "Je négocie pour qu'il comprenne.", good: "Je refuse clairement et je maintiens une posture professionnelle." }
+        ]
+      },
+      "outrage-rebellion": {
+        models: [
+          "En vertu de l'art. 433-5 du Code pénal, les insultes adressées aux policiers peuvent constituer un outrage si elles atteignent la dignité ou le respect dû à la fonction. L'art. 433-6 du Code pénal permet d'envisager la rébellion si ALPHA oppose une résistance violente lors du contrôle. La bousculade de BRAVO peut aussi relever de violences aggravées sur personne dépositaire de l'autorité publique au sens de l'art. 222-13 du Code pénal. Je distingue enfin CHARLIE, qui peut filmer sauf entrave ou danger.",
+          "Conformément à l'art. R.434-18 du CSI, je n'emploie la force que si elle est nécessaire et proportionnée. Je commence par sécuriser la distance, répartir les rôles avec BRAVO et donner des injonctions claires à ALPHA. S'il avance, bouscule ou résiste, je procède au contrôle ou à l'interpellation dans le cadre légal, sans répondre aux insultes et en tenant compte de l'alcoolisation et du public.",
+          "Conformément à l'art. R.434-18 du CSI, ma réaction à CHARLIE doit rester proportionnée au comportement réel. Je n'interdis pas la captation au seul motif qu'elle me gêne ; je lui demande de rester à distance et de ne pas entraver l'intervention. S'il franchit le périmètre, excite le groupe ou met quelqu'un en danger, je donne des injonctions claires, je rends compte et j'adapte la réponse.",
+          "En vertu de l'art. 433-5 du Code pénal, je consigne les paroles exactes susceptibles de constituer l'outrage. J'ajoute l'heure, le lieu, l'état apparent d'ALPHA, la demande de recul, la bousculade de BRAVO, les gestes de résistance relevant possiblement de l'art. 433-6, la force employée et sa proportionnalité au regard de l'art. R.434-18 du CSI. Je mentionne CHARLIE uniquement pour son comportement réel."
+        ],
+        commonErrors: [
+          { bad: "Je réponds aux insultes.", good: "Je garde une posture calme et je relève les propos exacts au sens de l'art. 433-5 du Code pénal." },
+          { bad: "Filmer est interdit.", good: "Je distingue la captation d'images d'une entrave ou d'un danger concret." },
+          { bad: "Je force immédiatement.", good: "J'emploie une contrainte seulement nécessaire et proportionnée selon l'art. R.434-18 du CSI." }
+        ]
+      },
+      "vol-arrache": {
+        models: [
+          "En vertu de l'art. 311-1 du Code pénal, l'arrachage du sac de CHARLIE constitue une soustraction frauduleuse. L'art. 311-4 du Code pénal permet d'envisager l'aggravation par violence, car la victime tombe et se plaint du poignet. La flagrance de l'art. 53 du CPP est caractérisée par la vision directe des faits, la clameur publique et la possession du sac quelques minutes plus tard.",
+          "En application de l'art. 73 du CPP, BRAVO peut poursuivre et appréhender ALPHA si le vol flagrant puni d'emprisonnement est caractérisé. Chronologiquement, je reste auprès de CHARLIE, je sécurise la victime, j'évalue son état et je sollicite les secours si nécessaire. En parallèle, je recueille les témoins, la direction de fuite et les coordonnées utiles, puis je rends compte à l'OPJ.",
+          "En application de l'art. 73 du CPP, l'interpellation d'ALPHA doit conduire sans délai à l'avis de l'OPJ. Je sécurise la personne, je vérifie l'absence de danger immédiat, je préserve le sac comme élément matériel et je sépare ALPHA de CHARLIE et des témoins. Je note l'heure, le lieu, la poursuite et les conditions de découverte du sac, sans décider seul des suites procédurales.",
+          "En vertu de l'art. 53 du CPP, la procédure doit démontrer la flagrance par une chronologie précise. Je mentionne la patrouille, l'heure, le lieu, l'arrachage vu directement, la chute et la douleur de CHARLIE, les cris des passants, la fuite, la poursuite par BRAVO, l'interpellation, le sac retrouvé et les témoins. J'ajoute les références aux art. 311-1, 311-4 du Code pénal et 73 du CPP."
+        ],
+        commonErrors: [
+          { bad: "J'arrête le voleur.", good: "Je procède à son interpellation en flagrance au sens de l'art. 53 du CPP." },
+          { bad: "Je pars tous en poursuite.", good: "Un collègue poursuit pendant que je protège la victime blessée." },
+          { bad: "Je rends le sac immédiatement.", good: "Je préserve le sac comme élément matériel et j'attends les instructions de l'OPJ." }
+        ]
+      },
+      "rixe-espace-public": {
+        models: [
+          "En vertu de l'art. 222-13 du Code pénal, les violences peuvent être aggravées par l'usage ou la menace d'une arme, ici la bouteille brisée, et par la réunion si plusieurs personnes participent. L'art. 431-3 du Code pénal permet aussi de qualifier l'attroupement troublant l'ordre public sur une place fréquentée. Je priorise donc la blessure de CHARLIE, le danger de l'arme, les tiers exposés et le retour au calme.",
+          "Conformément à l'art. R.434-18 du CSI, j'emploie une force seulement nécessaire et proportionnée pour faire cesser la rixe. Je demande d'abord des renforts si besoin, je sécurise le périmètre, j'éloigne les familles, puis je donne des injonctions claires : reculer, poser la bouteille et se séparer. Ensuite, je fais prendre en charge CHARLIE, je protège les témoins et je rends compte au CIC et à la hiérarchie.",
+          "En vertu de l'art. 431-3 du Code pénal, le trouble à l'ordre public doit être documenté par des éléments concrets. J'identifie les témoins directs, je distingue ce qu'ils ont vu de ce qu'ils rapportent, je note les vidéos disponibles et je signale leur existence à l'OPJ. Je recueille aussi les informations du gérant sur les clients partis, les craintes de dégradations et l'impact sur la place.",
+          "En vertu de l'art. 222-13 du Code pénal, je traite d'abord les violences avec arme possible avant les éléments secondaires de tapage. Après retour au calme, je vérifie les blessés, je préserve la bouteille, j'identifie les protagonistes et j'avise l'OPJ. Mon compte rendu reprend les appels, l'arrivée, les comportements, les injonctions, la force éventuelle, les témoins, les vidéos, les blessures et le trouble causé."
+        ],
+        commonErrors: [
+          { bad: "Je disperse tout le monde sans constater.", good: "Je sécurise, je recueille les éléments et je rends compte à l'OPJ." },
+          { bad: "La bouteille n'est qu'un détail.", good: "Je relève l'usage ou la menace d'une arme possible au regard de l'art. 222-13 du Code pénal." },
+          { bad: "Je traite seulement le tapage.", good: "Je priorise les violences et le danger immédiat avant le tapage." }
+        ]
+      }
+    };
+
+    Object.entries(caseStyleEnhancements).forEach(([caseId, enhancement]) => {
+      const caseItem = cases.find((item) => item.id === caseId);
+      if (!caseItem) {
+        return;
+      }
+      if (enhancement.noVictim) {
+        caseItem.noVictim = true;
+      }
+      if (enhancement.commonErrors) {
+        caseItem.commonErrors = enhancement.commonErrors;
+      }
+      if (enhancement.models) {
+        enhancement.models.forEach((model, index) => {
+          if (caseItem.questions[index]) {
+            caseItem.questions[index].model = model;
+          }
+        });
+      }
+    });
 
     const modeConfig = {
       simulation: {
@@ -3147,10 +3793,11 @@ C'est ce qui fait la différence entre une bonne et une excellente réponse.</p>
 
       const { caseItem, question } = getCurrentCaseAndQuestion();
       const normalizedAnswer = normalizeText(answer);
-      const checklist = question.keypoints.map((point) => {
+      const questionChecklist = question.keypoints.map((point) => {
         const found = point.keywords.some((keyword) => normalizedAnswer.includes(normalizeText(keyword)));
         return { ...point, found };
       });
+      const checklist = [...questionChecklist, ...buildStandardChecklist(normalizedAnswer, caseItem)];
       const scoreDetails = buildScoreDetails(answer, question, checklist);
       const score = scoreDetails.filter((criterion) => criterion.earned).length;
       state.scores[key] = score;
@@ -3167,7 +3814,7 @@ C'est ce qui fait la différence entre une bonne et une excellente réponse.</p>
         </li>
       `).join("");
       document.getElementById("structured-model-answer").innerHTML = buildStructuredModel(question);
-      document.getElementById("common-errors").innerHTML = buildCommonErrors(getQuestionType(caseItem, question)).map((error) => `
+      document.getElementById("common-errors").innerHTML = buildCommonErrors(getQuestionType(caseItem, question), caseItem, question).map((error) => `
         <li>
           <strong>❌ Ne pas dire : ${escapeHtml(error.bad)}</strong>
           <span>✅ Dire : ${escapeHtml(error.good)}</span>
@@ -3249,7 +3896,48 @@ C'est ce qui fait la différence entre une bonne et une excellente réponse.</p>
       `;
     }
 
-    function buildCommonErrors(type) {
+    function buildStandardChecklist(normalizedAnswer, caseItem) {
+      const hasNoVictim = caseItem.noVictim === true;
+      return [
+        {
+          label: "A qualifié juridiquement les faits",
+          found: /\b(qualifi|qualification|infraction|violence|vol|outrage|rebellion|flagrance|attroupement|disparition|delit)\b/.test(normalizedAnswer)
+        },
+        {
+          label: "A cité au moins un article exact du dossier",
+          found: /\b(article|art\.|code|cpp|csi|penal|route|sante publique|r\.\d+|l\.\d+|\d{2,3}-\d+)\b/.test(normalizedAnswer)
+        },
+        {
+          label: "A proposé des actions dans l'ordre",
+          found: /\b(d'abord|en premier|ensuite|puis|apres|enfin|chronologique|priorite)\b/.test(normalizedAnswer)
+        },
+        {
+          label: "Est resté dans son rôle de GPX",
+          found: /\b(gpx|gardien|apj|opj|hierarchie|transmet|avise|rend compte|competence)\b/.test(normalizedAnswer)
+        },
+        {
+          label: "A rendu compte à la hiérarchie",
+          found: /\b(hierarchie|superieur|chef|cic|salle|opj|parquet|rend compte|avise|informe)\b/.test(normalizedAnswer)
+        },
+        {
+          label: "A pris en charge la victime si présente",
+          found: hasNoVictim || /\b(victime|blesse|secours|samu|pompiers|medical|umj|plainte|association|protection)\b/.test(normalizedAnswer)
+        },
+        {
+          label: "N'a pas outrepassé les compétences GPX",
+          found: /\b(opj|parquet|autorite judiciaire|transmet|avise|competence|sous controle|instructions)\b/.test(normalizedAnswer)
+        }
+      ];
+    }
+
+    function buildCommonErrors(type, caseItem, question) {
+      if (question.commonErrors && question.commonErrors.length) {
+        return question.commonErrors;
+      }
+      if (caseItem.commonErrors && caseItem.commonErrors.length) {
+        return caseItem.commonErrors;
+      }
+
       const errors = {
         qualification: [
           {
